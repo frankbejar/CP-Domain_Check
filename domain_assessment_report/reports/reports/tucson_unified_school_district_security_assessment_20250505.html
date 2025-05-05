@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tucson Unified School District - Domain Security Assessment Report</title>
+    <style>
+        :root {
+            --primary-color: #0d4f9c; /* CyberPools blue */
+            --secondary-color: #2d8de0; /* Lighter blue */
+            --accent-color: #ff6b00; /* Orange accent */
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #333333;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --info-color: #3498db;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.5;
+            color: var(--dark-gray);
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 10px; /* Reduced padding for more compact layout */
+        }
+        
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 0;
+            margin-bottom: 15px;
+        }
+        
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .report-info {
+            text-align: right;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 8px;
+            margin-top: 12px;
+            color: var(--primary-color);
+        }
+        
+        h1 {
+            font-size: 24px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+        }
+        
+        h2 {
+            font-size: 20px;
+            padding-top: 6px;
+            border-bottom: 1px solid var(--medium-gray);
+            padding-bottom: 4px;
+        }
+        
+        h3 {
+            font-size: 18px;
+            padding-top: 4px;
+        }
+        
+        h4 {
+            font-size: 16px;
+            padding-top: 3px;
+        }
+        
+        p {
+            margin-bottom: 8px;
+        }
+        
+        .summary-dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+            justify-content: center;
+        }
+        
+        .summary-card {
+            background-color: white;
+            border-radius: 6px;
+            border: 1px solid var(--medium-gray);
+            padding: 10px;
+            flex: 1;
+            min-width: 120px;
+            max-width: 180px;
+            border-top: 4px solid var(--secondary-color);
+            text-align: center;
+        }
+        
+        .summary-card h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        
+        .summary-number {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 6px 0;
+            color: var(--primary-color);
+        }
+        
+        .summary-card.critical {
+            border-top-color: #7b0000;
+        }
+        
+        .summary-card.high {
+            border-top-color: #c10000;
+        }
+        
+        .summary-card.medium {
+            border-top-color: #f39c12;
+        }
+        
+        .summary-card.low {
+            border-top-color: #2ecc71;
+        }
+        
+        .summary-card.info {
+            border-top-color: #3498db;
+        }
+        
+        .summary-card.critical .summary-number {
+            color: #7b0000;
+        }
+        
+        .summary-card.high .summary-number {
+            color: #c10000;
+        }
+        
+        .summary-card.medium .summary-number {
+            color: #f39c12;
+        }
+        
+        .summary-card.low .summary-number {
+            color: #2ecc71;
+        }
+        
+        .summary-card.info .summary-number {
+            color: #3498db;
+        }
+        
+        .finding-severity {
+            display: inline-block;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 12px;
+            color: white;
+        }
+        
+        .severity-Critical {
+            background-color: #7b0000;
+        }
+        
+        .severity-High {
+            background-color: #c10000;
+        }
+        
+        .severity-Medium {
+            background-color: #f39c12;
+        }
+        
+        .severity-Low {
+            background-color: #2ecc71;
+        }
+        
+        .severity-Info {
+            background-color: #3498db;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 12px;
+            margin-top: 8px;
+            border: 1px solid var(--medium-gray);
+        }
+        
+        th, td {
+            border: 1px solid var(--medium-gray);
+            padding: 6px 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--light-gray);
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        tbody tr:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+        
+        tbody tr:hover {
+            background-color: var(--medium-gray);
+        }
+        
+        .domain-section {
+            margin-bottom: 15px;
+            background-color: white;
+            border-radius: 6px;
+            border: 1px solid var(--medium-gray);
+            padding: 10px;
+        }
+        
+        .domain-header {
+            background-color: var(--light-gray);
+            padding: 8px;
+            margin: -10px -10px 10px -10px;
+            border-radius: 6px 6px 0 0;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        .domain-header h2 {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            margin-top: 0;
+            border-bottom: none;
+        }
+        
+        .finding-list {
+            margin-top: 8px;
+            padding-left: 0;
+        }
+        
+        .finding-list li {
+            margin-bottom: 8px;
+            list-style-type: none;
+            padding: 8px;
+            border-radius: 4px;
+            border-left: 4px solid;
+        }
+        
+        .finding-list li.Critical {
+            border-left-color: #7b0000;
+            background-color: rgba(123, 0, 0, 0.05);
+        }
+        
+        .finding-list li.High {
+            border-left-color: #c10000;
+            background-color: rgba(193, 0, 0, 0.05);
+        }
+        
+        .finding-list li.Medium {
+            border-left-color: #f39c12;
+            background-color: rgba(243, 156, 18, 0.05);
+        }
+        
+        .finding-list li.Low {
+            border-left-color: #2ecc71;
+            background-color: rgba(46, 204, 113, 0.05);
+        }
+        
+        .finding-list li.Info {
+            border-left-color: #3498db;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        
+        .finding-title {
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        
+        .finding-description {
+            margin-bottom: 4px;
+        }
+        
+        .finding-evidence {
+            font-family: monospace;
+            font-size: 12px;
+            background-color: rgba(0,0,0,0.05);
+            padding: 4px;
+            border-radius: 3px;
+            margin-bottom: 4px;
+            word-break: break-all;
+        }
+        
+        .finding-recommendation {
+            font-style: italic;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 12px 0;
+            margin-top: 20px;
+            color: var(--dark-gray);
+            border-top: 1px solid var(--medium-gray);
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            margin-bottom: 8px;
+        }
+        
+        .footer-logo img {
+            height: 35px;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background-color: var(--light-gray);
+            margin: 12px 0;
+        }
+        
+        /* Page breaks for main sections */
+        .page-break {
+            page-break-before: always;
+        }
+        
+        .no-break {
+            page-break-inside: avoid;
+        }
+        
+        .report-metadata {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+            padding: 8px;
+            background-color: var(--light-gray);
+            border-radius: 6px;
+        }
+        
+        .metadata-item {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .metadata-label {
+            font-weight: bold;
+            margin-bottom: 2px;
+            color: var(--primary-color);
+        }
+        
+        .metadata-value {
+            font-size: 16px;
+        }
+        
+        .info-table {
+            margin-bottom: 10px;
+        }
+        
+        .info-table h4 {
+            background-color: var(--light-gray);
+            padding: 5px;
+            border-radius: 4px;
+            margin-top: 6px;
+        }
+        
+        .dns-info, .header-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 8px 0;
+        }
+        
+        .info-card {
+            background-color: white;
+            border: 1px solid var(--medium-gray);
+            border-radius: 4px;
+            padding: 8px;
+            flex: 1;
+            min-width: 180px;
+        }
+        
+        .info-card h5 {
+            margin-bottom: 5px;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--medium-gray);
+            padding-bottom: 3px;
+            font-size: 14px;
+        }
+        
+        .info-list {
+            list-style-type: none;
+            margin-left: 3px;
+            padding-left: 0;
+        }
+        
+        .info-list li {
+            margin-bottom: 3px;
+            font-size: 13px;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 2px 5px;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 3px;
+            margin-left: 4px;
+        }
+        
+        .badge-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .badge-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .domain-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+        
+        .status-icon {
+            font-size: 16px;
+        }
+        
+        .status-ok {
+            color: #28a745;
+        }
+        
+        .status-warning {
+            color: #ffc107;
+        }
+        
+        .status-error {
+            color: #dc3545;
+        }
+        
+        /* Recommendation sections */
+        .recommendation-section {
+            margin-top: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .recommendation-section h3 {
+            margin-bottom: 6px;
+        }
+        
+        .recommendation-section ul {
+            padding-left: 20px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .recommendation-section ul li {
+            margin-bottom: 4px;
+        }
+        
+        .recommendation-section ul li strong {
+            color: var(--primary-color);
+        }
+        
+        /* CyberPools brand footer */
+        .cyberpools-brand {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 16px;
+            border-radius: 4px;
+        }
+        
+        .cyberpools-brand a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .cyberpools-brand a:hover {
+            text-decoration: underline;
+        }
+        
+        /* For better PDF rendering margins */
+        @page {
+            margin: 1cm; /* Reduced margin from 1.5cm */
+            size: letter portrait;
+        }
+        
+        @media print {
+            body {
+                font-size: 10pt;
+                line-height: 1.3; /* Tighter line spacing for print */
+            }
+            
+            .container {
+                max-width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .header {
+                background-color: #fff !important;
+                color: #000 !important;
+                padding: 8px 0;
+                margin-bottom: 10px;
+            }
+            
+            h1, h2, h3, h4 {
+                color: #000 !important;
+                margin-top: 0.4em;
+                margin-bottom: 0.4em;
+            }
+            
+            /* Replace box-shadow with borders */
+            .summary-card, .domain-section, table, .info-card {
+                border: 1px solid #ddd !important;
+            }
+            
+            /* Keep these elements together */
+            .domain-section, 
+            .finding-list li, 
+            .recommendation-section,
+            table, 
+            .info-card,
+            .no-break {
+                page-break-inside: avoid !important;
+            }
+            
+            /* Ensure no blank pages */
+            .page-break {
+                page-break-before: always;
+                clear: both;
+                break-after: avoid;
+            }
+            
+            /* Make findings more compact */
+            .finding-list li {
+                margin-bottom: 6px;
+                padding: 6px;
+            }
+            
+            /* Use space more efficiently */
+            .domain-section {
+                margin-bottom: 12px;
+                padding: 8px;
+            }
+            
+            .domain-header {
+                margin: -8px -8px 8px -8px;
+                padding: 6px;
+            }
+            
+            p {
+                margin-bottom: 5px;
+            }
+            
+            .report-metadata {
+                margin-bottom: 8px;
+                padding: 6px;
+            }
+            
+            .info-table h4 {
+                padding: 4px;
+            }
+            
+            .dns-info, .header-info {
+                gap: 8px;
+            }
+            
+            /* Make nested lists more compact */
+            ul, ol {
+                padding-left: 18px;
+                margin-top: 3px;
+                margin-bottom: 3px;
+            }
+            
+            .cyberpools-brand {
+                background-color: #fff !important;
+                color: #000 !important;
+                border: 1px solid #000;
+                padding: 6px;
+                margin-top: 12px;
+            }
+            
+            .cyberpools-brand a {
+                color: #000 !important;
+            }
+            
+            /* For small reports, reduce or remove page breaks */
+            @media (max-height: 1000px) {
+                .page-break {
+                    page-break-before: auto;
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <!-- Logo is embedded as base64 to avoid missing file issues -->
+                <img src="./images/cyberpools_logo.png" alt="CyberPools Logo">
+                <span>Domain Security Assessment Report</span>
+            </div>
+            <div class="report-info">
+                <div>May 05, 2025</div>
+                <div>Confidential</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h1>Tucson Unified School District</h1>
+        
+        <div class="report-metadata">
+            <div class="metadata-item">
+                <div class="metadata-label">Member</div>
+                <div class="metadata-value">Tucson Unified School District</div>
+            </div>
+            <div class="metadata-item">
+                <div class="metadata-label">Assessment Date</div>
+                <div class="metadata-value">May 05, 2025</div>
+            </div>
+            <div class="metadata-item">
+                <div class="metadata-label">Domains Assessed</div>
+                <div class="metadata-value">1/1</div>
+            </div>
+        </div>
+        
+        <h2>Executive Summary</h2>
+        <p>
+            This report presents the findings of a security assessment conducted for Tucson Unified School District 
+            on May 05, 2025. The assessment focused on domain security configurations, 
+            including DNS settings, HTTP security headers, and SSL/TLS implementations.
+        </p>
+        
+        <div class="summary-dashboard">
+            <div class="summary-card critical">
+                <h3>Critical</h3>
+                <div class="summary-number">0</div>
+                <p>Issues requiring immediate attention</p>
+            </div>
+            <div class="summary-card high">
+                <h3>High</h3>
+                <div class="summary-number">0</div>
+                <p>Significant security concerns</p>
+            </div>
+            <div class="summary-card medium">
+                <h3>Medium</h3>
+                <div class="summary-number">3</div>
+                <p>Moderate risk concerns</p>
+            </div>
+            <div class="summary-card low">
+                <h3>Low</h3>
+                <div class="summary-number">7</div>
+                <p>Minor security improvements</p>
+            </div>
+            <div class="summary-card info">
+                <h3>Info</h3>
+                <div class="summary-number">0</div>
+                <p>Informational findings</p>
+            </div>
+        </div>
+        
+        <!-- Key Findings Section with conditional page break -->
+        
+        <h2>Key Findings</h2>
+        <p>
+            Our assessment identified a total of 10 issues across 1 domains.
+            The findings are categorized by severity to help prioritize remediation efforts.
+        </p>
+        
+        <table class="no-break">
+            <thead>
+                <tr>
+                    <th>Severity</th>
+                    <th>Count</th>
+                    <th>Description</th>
+                    <th>Recommended Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                
+                
+                <tr>
+                    <td><span class="finding-severity severity-Medium">Medium</span></td>
+                    <td>3</td>
+                    <td>Security issues that should be addressed</td>
+                    <td>Address within 1 month</td>
+                </tr>
+                
+                
+                <tr>
+                    <td><span class="finding-severity severity-Low">Low</span></td>
+                    <td>7</td>
+                    <td>Minor security concerns</td>
+                    <td>Address during next maintenance cycle</td>
+                </tr>
+                
+                
+            </tbody>
+        </table>
+        
+        <!-- Detailed Findings Section with conditional page break -->
+        
+        <div class="domain-section no-break">
+            <div class="domain-header">
+                <h2>Detailed Findings: TUSD1.org</h2>
+            </div>
+            
+            <div class="domain-status">
+                
+                <div class="status-icon status-warning">⚠️</div>
+                <strong>Issues found:</strong> 10 issue(s) detected
+                
+            </div>
+            
+            
+            <!-- Technical Information -->
+            <div class="info-table">
+                <h4>Technical Information</h4>
+                <div class="dns-info">
+                    <div class="info-card">
+                        <h5>DNS Configuration</h5>
+                        <ul class="info-list">
+                            <li>Resolves to IP: 
+                                
+                                <span class="badge badge-success">Yes</span>
+                                104.18.43.227, 172.64.144.29
+                                
+                            </li>
+                            <li>SPF Record: 
+                                
+                                <span class="badge badge-success">Yes</span>
+                                
+                            </li>
+                            <li>DMARC Record: 
+                                
+                                <span class="badge badge-success">Yes</span>
+                                
+                            </li>
+                            <li>DNSSEC Enabled: 
+                                
+                                <span class="badge badge-danger">No</span>
+                                
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    
+                    <div class="info-card">
+                        <h5>Web Server</h5>
+                        <ul class="info-list">
+                            <li>HTTPS Supported: 
+                                
+                                <span class="badge badge-success">Yes</span>
+                                
+                            </li>
+                            <li>Web Server: cloudflare</li>
+                            <li>HTTP Version: HTTP/1.1</li>
+                            <li>Security Headers: 0 implemented</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            
+            <!-- Security Findings -->
+            
+            <div class="findings-section">
+                <h4>Security Findings</h4>
+                <ul class="finding-list">
+                    
+                    <li class="Medium">
+                        <div class="finding-title">
+                            Missing HTTP Strict Transport Security (HSTS) Header
+                            <span class="finding-severity severity-Medium">Medium</span>
+                        </div>
+                        <div class="finding-description">The HTTP Strict Transport Security (HSTS) header is not set</div>
+                        <div class="finding-evidence">Evidence: Header not present in response</div>
+                        <div class="finding-recommendation">Recommendation: Add Strict-Transport-Security: max-age=31536000; includeSubDomains header</div>
+                    </li>
+                    
+                    <li class="Medium">
+                        <div class="finding-title">
+                            Missing Content Security Policy (CSP) Header
+                            <span class="finding-severity severity-Medium">Medium</span>
+                        </div>
+                        <div class="finding-description">The Content Security Policy (CSP) header is not set</div>
+                        <div class="finding-evidence">Evidence: Header not present in response</div>
+                        <div class="finding-recommendation">Recommendation: Add Content-Security-Policy: default-src 'self' header</div>
+                    </li>
+                    
+                    <li class="Medium">
+                        <div class="finding-title">
+                            Insecure Cookie
+                            <span class="finding-severity severity-Medium">Medium</span>
+                        </div>
+                        <div class="finding-description">Cookie 'ASP.NET_SessionId' is set without the Secure flag</div>
+                        <div class="finding-evidence">Evidence: Cookie ASP.NET_SessionId missing Secure flag</div>
+                        <div class="finding-recommendation">Recommendation: Set the Secure flag for all cookies</div>
+                    </li>
+                    
+                    <li class="Low">
+                        <div class="finding-title">
+                            DNSSEC Not Enabled
+                            <span class="finding-severity severity-Low">Low</span>
+                        </div>
+                        <div class="finding-description">DNSSEC is not enabled for TUSD1.org. This can allow DNS poisoning attacks.</div>
+                        <div class="finding-evidence">Evidence: No DNSKEY records found</div>
+                        <div class="finding-recommendation">Recommendation: Enable DNSSEC to add cryptographic authentication to DNS</div>
+                    </li>
+                    
+                    <li class="Low">
+                        <div class="finding-title">
+                            Missing X-Content-Type-Options Header
+                            <span class="finding-severity severity-Low">Low</span>
+                        </div>
+                        <div class="finding-description">The X-Content-Type-Options header is not set</div>
+                        <div class="finding-evidence">Evidence: Header not present in response</div>
+                        <div class="finding-recommendation">Recommendation: Add X-Content-Type-Options: nosniff header</div>
+                    </li>
+                    
+                    <li class="Low">
+                        <div class="finding-title">
+                            Missing X-Frame-Options Header
+                            <span class="finding-severity severity-Low">Low</span>
+                        </div>
+                        <div class="finding-description">The X-Frame-Options header is not set</div>
+                        <div class="finding-evidence">Evidence: Header not present in response</div>
+                        <div class="finding-recommendation">Recommendation: Add X-Frame-Options: SAMEORIGIN header</div>
+                    </li>
+                    
+                    <li class="Low">
+                        <div class="finding-title">
+                            Missing X-XSS-Protection Header
+                            <span class="finding-severity severity-Low">Low</span>
+                        </div>
+                        <div class="finding-description">The X-XSS-Protection header is not set</div>
+                        <div class="finding-evidence">Evidence: Header not present in response</div>
+                        <div class="finding-recommendation">Recommendation: Add X-XSS-Protection: 1; mode=block header</div>
+                    </li>
+                    
+                    <li class="Low">
+                        <div class="finding-title">
+                            Missing Referrer Policy Header
+                            <span class="finding-severity severity-Low">Low</span>
+                        </div>
+                        <div class="finding-description">The Referrer Policy header is not set</div>
+                        <div class="finding-evidence">Evidence: Header not present in response</div>
+                        <div class="finding-recommendation">Recommendation: Add Referrer-Policy: strict-origin-when-cross-origin header</div>
+                    </li>
+                    
+                    <li class="Low">
+                        <div class="finding-title">
+                            Missing Permissions Policy Header
+                            <span class="finding-severity severity-Low">Low</span>
+                        </div>
+                        <div class="finding-description">The Permissions Policy header is not set</div>
+                        <div class="finding-evidence">Evidence: Header not present in response</div>
+                        <div class="finding-recommendation">Recommendation: Add Permissions-Policy: Present (with appropriate restrictions) header</div>
+                    </li>
+                    
+                    <li class="Low">
+                        <div class="finding-title">
+                            Missing Feature Policy (deprecated) Header
+                            <span class="finding-severity severity-Low">Low</span>
+                        </div>
+                        <div class="finding-description">The Feature Policy (deprecated) header is not set</div>
+                        <div class="finding-evidence">Evidence: Header not present in response</div>
+                        <div class="finding-recommendation">Recommendation: Add Feature-Policy: Present (with appropriate restrictions) header</div>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+        </div>
+        
+        
+        <!-- Remediation Recommendations Section with conditional page break -->
+        
+        <h2>Remediation Recommendations</h2>
+        
+        <div class="recommendation-section no-break">
+            <h3>DNS Security Recommendations</h3>
+            <ul>
+                <li><strong>Implement SPF Records:</strong> Sender Policy Framework helps prevent email spoofing by specifying which servers are authorized to send email from your domain.</li>
+                <li><strong>Configure DMARC:</strong> Domain-based Message Authentication, Reporting, and Conformance provides additional protection against email spoofing and phishing.</li>
+                <li><strong>Enable DNSSEC:</strong> DNS Security Extensions add cryptographic signatures to DNS records to prevent DNS poisoning attacks.</li>
+                <li><strong>Secure Name Servers:</strong> Ensure name servers are properly configured and not vulnerable to zone transfer attacks or acting as open resolvers.</li>
+            </ul>
+        </div>
+        
+        <div class="recommendation-section no-break">
+            <h3>Web Security Recommendations</h3>
+            <ul>
+                <li><strong>Implement HTTPS:</strong> All websites should use HTTPS with a valid SSL/TLS certificate.</li>
+                <li><strong>Security Headers:</strong> Implement recommended security headers to protect against common web vulnerabilities:
+                    <ul>
+                        <li>Strict-Transport-Security (HSTS): Forces browsers to use HTTPS</li>
+                        <li>Content-Security-Policy (CSP): Prevents cross-site scripting (XSS) attacks</li>
+                        <li>X-Content-Type-Options: Prevents MIME type sniffing</li>
+                        <li>X-Frame-Options: Protects against clickjacking attacks</li>
+                        <li>Referrer-Policy: Controls what information is sent in the Referer header</li>
+                    </ul>
+                </li>
+                <li><strong>Secure Cookies:</strong> Set the Secure and HttpOnly flags on cookies containing sensitive information.</li>
+                <li><strong>Hide Version Information:</strong> Configure servers to hide software versions in HTTP headers to prevent targeted attacks.</li>
+            </ul>
+        </div>
+        
+        <div class="recommendation-section no-break">
+            <h3>SSL/TLS Recommendations</h3>
+            <ul>
+                <li><strong>Use Modern Protocols:</strong> Only support TLS 1.2 and TLS 1.3; disable older protocols (SSL 3.0, TLS 1.0, TLS 1.1).</li>
+                <li><strong>Strong Cipher Suites:</strong> Use only strong cipher suites with forward secrecy.</li>
+                <li><strong>Certificate Maintenance:</strong> Ensure certificates are valid, issued by trusted authorities, and renewed before expiration.</li>
+            </ul>
+        </div>
+        
+        <!-- Methodology Section with conditional page break -->
+        
+        <h2>Methodology</h2>
+        <p>
+            This assessment was conducted using passive scanning techniques to analyze domain security configurations.
+            The assessment focused on two main areas:
+        </p>
+        
+        <div class="no-break">
+            <h3>DNS Configuration Analysis</h3>
+            <ul>
+                <li>Verification of domain resolution and DNS record configuration</li>
+                <li>Analysis of SPF, DKIM, and DMARC email security records</li>
+                <li>Checking for DNSSEC implementation</li>
+                <li>Review of name server configurations</li>
+            </ul>
+        </div>
+        
+        <div class="no-break">
+            <h3>Header-Based Fingerprinting</h3>
+            <ul>
+                <li>HTTP/HTTPS protocol support verification</li>
+                <li>Web server technology identification</li>
+                <li>Security header implementation check</li>
+                <li>SSL/TLS configuration assessment</li>
+                <li>Cookie security analysis</li>
+            </ul>
+        </div>
+        
+        <p>
+            The assessment is designed to be non-intrusive and focuses only on publicly accessible information.
+            No active vulnerability scanning or penetration testing was performed.
+        </p>
+        
+        <!-- CyberPools branding -->
+        <div class="cyberpools-brand">
+            Brought to you by <a href="https://www.cyberpools.org/" target="_blank">CyberPools</a>
+        </div>
+        
+        <div class="footer">
+            <p>
+                Security Assessment Report generated on May 05, 2025 for Tucson Unified School District.
+                This report is confidential and intended for authorized use only.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

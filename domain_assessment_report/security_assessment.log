@@ -1,0 +1,96 @@
+2025-05-05 14:33:15,285 - security_assessment - INFO - Security Assessment initialized for client: Tucson Unified School District
+2025-05-05 14:33:15,290 - security_assessment - INFO - Loaded 1 domains from domains.csv
+2025-05-05 14:33:15,290 - security_assessment - INFO - Analyzing 1 domains
+2025-05-05 14:33:20,357 - security_assessment - INFO - Progress: 1/1 domains analyzed
+2025-05-05 14:33:20,386 - security_assessment - INFO - HTML report generated: ./reports/reports/tucson_unified_school_district_security_assessment_20250505.html
+2025-05-05 14:33:20,451 - weasyprint - WARNING - Ignored `box-shadow: 0 2px 5px rgba(0,0,0,0.1)` at 101:13, unknown property.
+2025-05-05 14:33:20,452 - weasyprint - WARNING - Ignored `box-shadow: 0 2px 3px rgba(0,0,0,0.1)` at 193:13, unknown property.
+2025-05-05 14:33:20,452 - weasyprint - WARNING - Ignored `box-shadow: 0 2px 5px rgba(0,0,0,0.1)` at 220:13, unknown property.
+2025-05-05 14:33:20,454 - weasyprint - WARNING - Ignored `box-shadow: none` at 442:17, unknown property.
+2025-05-05 14:33:20,454 - weasyprint - WARNING - Ignored `box-shadow: none` at 448:17, unknown property.
+2025-05-05 14:33:20,454 - weasyprint - WARNING - Ignored `box-shadow: none` at 453:17, unknown property.
+2025-05-05 14:33:21,360 - security_assessment - INFO - PDF report generated: ./reports/reports/tucson_unified_school_district_security_assessment_20250505.pdf
+2025-05-05 14:42:35,729 - security_assessment - INFO - Security Assessment initialized for client: Tucson Unified School District
+2025-05-05 14:42:35,733 - security_assessment - INFO - Loaded 1 domains from domains.csv
+2025-05-05 14:42:35,733 - security_assessment - INFO - Analyzing 1 domains
+2025-05-05 14:42:40,445 - security_assessment - INFO - Progress: 1/1 domains analyzed
+2025-05-05 14:42:40,480 - security_assessment - INFO - HTML report generated: ./reports/reports/tucson_unified_school_district_security_assessment_20250505.html
+2025-05-05 14:42:40,553 - weasyprint - WARNING - Ignored `box-shadow: 0 2px 5px rgba(0,0,0,0.1)` at 109:13, unknown property.
+2025-05-05 14:42:40,554 - weasyprint - WARNING - Ignored `box-shadow: 0 1px 2px rgba(0,0,0,0.1)` at 204:13, unknown property.
+2025-05-05 14:42:40,555 - weasyprint - WARNING - Ignored `box-shadow: 0 1px 3px rgba(0,0,0,0.1)` at 231:13, unknown property.
+2025-05-05 14:42:40,557 - weasyprint - WARNING - Ignored `box-shadow: none` at 521:17, unknown property.
+2025-05-05 14:42:40,557 - weasyprint - WARNING - Ignored `box-shadow: none` at 527:17, unknown property.
+2025-05-05 14:42:40,557 - weasyprint - WARNING - Ignored `box-shadow: none` at 532:17, unknown property.
+2025-05-05 14:42:41,409 - security_assessment - INFO - PDF report generated: ./reports/reports/tucson_unified_school_district_security_assessment_20250505.pdf
+2025-05-05 14:50:46,979 - security_assessment - INFO - Security Assessment initialized for client: Tucson Unified School District
+2025-05-05 14:50:46,985 - security_assessment - INFO - Loaded 1 domains from domains.csv
+2025-05-05 14:50:46,985 - security_assessment - INFO - Analyzing 1 domains
+2025-05-05 14:50:51,445 - security_assessment - INFO - Progress: 1/1 domains analyzed
+2025-05-05 14:50:51,470 - security_assessment - INFO - HTML report generated: ./reports/reports/tucson_unified_school_district_security_assessment_20250505.html
+2025-05-05 14:50:51,541 - weasyprint - WARNING - Ignored `box-shadow: 0 2px 5px rgba(0,0,0,0.1)` at 109:13, unknown property.
+2025-05-05 14:50:51,542 - weasyprint - WARNING - Ignored `box-shadow: 0 1px 2px rgba(0,0,0,0.1)` at 204:13, unknown property.
+2025-05-05 14:50:51,542 - weasyprint - WARNING - Ignored `box-shadow: 0 1px 3px rgba(0,0,0,0.1)` at 231:13, unknown property.
+2025-05-05 14:50:51,544 - weasyprint - WARNING - Ignored `box-shadow: none` at 530:17, unknown property.
+2025-05-05 14:50:51,545 - weasyprint - WARNING - Ignored `box-shadow: none` at 536:17, unknown property.
+2025-05-05 14:50:51,545 - weasyprint - WARNING - Ignored `box-shadow: none` at 541:17, unknown property.
+2025-05-05 14:50:51,552 - weasyprint - ERROR - Failed to load image at 'file:///Users/frankbejar/Downloads/CP/domain_assessment_report/reports/reports/images/cyberpools_logo.png': URLError: <urlopen error [Errno 2] No such file or directory: '/Users/frankbejar/Downloads/CP/domain_assessment_report/reports/reports/images/cyberpools_logo.png'>
+2025-05-05 14:50:52,240 - security_assessment - INFO - PDF report generated: ./reports/reports/tucson_unified_school_district_security_assessment_20250505.pdf
+2025-05-05 15:06:39,354 - security_assessment - INFO - Security Assessment initialized for client: Tucson Unified School District
+2025-05-05 15:06:39,359 - security_assessment - INFO - Loaded 1 domains from domains.csv
+2025-05-05 15:06:39,359 - security_assessment - INFO - Analyzing 1 domains
+2025-05-05 15:06:44,073 - security_assessment - INFO - Progress: 1/1 domains analyzed
+2025-05-05 15:06:44,090 - security_assessment - INFO - HTML report generated: ./reports/reports/tucson_unified_school_district_security_assessment_20250505.html
+2025-05-05 15:06:44,098 - weasyprint - WARNING - Ignored `box-shadow: none ` at 46:25, unknown property.
+2025-05-05 15:06:44,163 - weasyprint - WARNING - Expected a media type, got '(max-height: 1000px)'
+2025-05-05 15:06:44,163 - weasyprint - WARNING - Invalid media type ' (max-height: 1000px) ' the whole @media rule was ignored at 579:13.
+2025-05-05 15:06:45,019 - security_assessment - INFO - PDF report generated: ./reports/reports/tucson_unified_school_district_security_assessment_20250505.pdf
+2025-05-05 15:11:08,917 - security_assessment - INFO - Security Assessment initialized for client: Tucson Unified School District
+2025-05-05 15:11:08,921 - security_assessment - INFO - Loaded 1 domains from domains.csv
+2025-05-05 15:11:08,921 - security_assessment - INFO - Analyzing 1 domains
+2025-05-05 15:11:13,045 - security_assessment - INFO - Progress: 1/1 domains analyzed
+2025-05-05 15:11:13,064 - security_assessment - ERROR - Error generating HTML report: Unexpected end of template. Jinja was looking for the following tags: 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.
+2025-05-05 15:12:18,549 - security_assessment - INFO - Security Assessment initialized for client: Tucson Unified School District
+2025-05-05 15:12:18,553 - security_assessment - INFO - Loaded 1 domains from domains.csv
+2025-05-05 15:12:18,553 - security_assessment - INFO - Analyzing 1 domains
+2025-05-05 15:12:22,364 - security_assessment - INFO - Progress: 1/1 domains analyzed
+2025-05-05 15:12:22,381 - security_assessment - INFO - HTML report generated: ./reports/reports/tucson_unified_school_district_security_assessment_20250505.html
+2025-05-05 15:12:22,391 - weasyprint - WARNING - Ignored `box-shadow: none ` at 46:25, unknown property.
+2025-05-05 15:12:22,462 - weasyprint - WARNING - Expected a media type, got '(max-height: 1000px)'
+2025-05-05 15:12:22,463 - weasyprint - WARNING - Invalid media type ' (max-height: 1000px) ' the whole @media rule was ignored at 579:13.
+2025-05-05 15:12:22,872 - security_assessment - INFO - PDF report generated: ./reports/reports/tucson_unified_school_district_security_assessment_20250505.pdf
+2025-05-05 15:16:18,959 - security_assessment - INFO - Security Assessment initialized for client: Tucson Unified School District
+2025-05-05 15:16:18,963 - security_assessment - INFO - Loaded 1 domains from domains.csv
+2025-05-05 15:16:18,963 - security_assessment - INFO - Analyzing 1 domains
+2025-05-05 15:16:24,044 - security_assessment - INFO - Progress: 1/1 domains analyzed
+2025-05-05 15:16:24,071 - security_assessment - INFO - HTML report generated: ./reports/reports/tucson_unified_school_district_security_assessment_20250505.html
+2025-05-05 15:16:24,085 - weasyprint - WARNING - Ignored `box-shadow: none ` at 46:25, unknown property.
+2025-05-05 15:16:24,147 - weasyprint - WARNING - Expected a media type, got '(max-height: 1000px)'
+2025-05-05 15:16:24,148 - weasyprint - WARNING - Invalid media type ' (max-height: 1000px) ' the whole @media rule was ignored at 579:13.
+2025-05-05 15:16:24,536 - security_assessment - INFO - PDF report generated: ./reports/reports/tucson_unified_school_district_security_assessment_20250505.pdf
+2025-05-05 15:17:33,106 - security_assessment - INFO - Security Assessment initialized for client: Tucson Unified School District
+2025-05-05 15:17:33,110 - security_assessment - INFO - Loaded 1 domains from domains.csv
+2025-05-05 15:17:33,110 - security_assessment - INFO - Analyzing 1 domains
+2025-05-05 15:17:37,115 - security_assessment - INFO - Progress: 1/1 domains analyzed
+2025-05-05 15:17:37,140 - security_assessment - INFO - HTML report generated: ./reports/reports/tucson_unified_school_district_security_assessment_20250505.html
+2025-05-05 15:17:37,154 - weasyprint - WARNING - Ignored `box-shadow: none ` at 46:25, unknown property.
+2025-05-05 15:17:37,221 - weasyprint - WARNING - Expected a media type, got '(max-height: 1000px)'
+2025-05-05 15:17:37,221 - weasyprint - WARNING - Invalid media type ' (max-height: 1000px) ' the whole @media rule was ignored at 579:13.
+2025-05-05 15:17:37,581 - security_assessment - INFO - PDF report generated: ./reports/reports/tucson_unified_school_district_security_assessment_20250505.pdf
+2025-05-05 15:26:08,688 - security_assessment - INFO - Security Assessment initialized for client: Tucson Unified School District
+2025-05-05 15:26:08,692 - security_assessment - INFO - Loaded 1 domains from domains.csv
+2025-05-05 15:26:08,692 - security_assessment - INFO - Analyzing 1 domains
+2025-05-05 15:26:13,627 - security_assessment - INFO - Progress: 1/1 domains analyzed
+2025-05-05 15:26:13,655 - security_assessment - INFO - HTML report generated: ./reports/reports/tucson_unified_school_district_security_assessment_20250505.html
+2025-05-05 15:26:13,669 - weasyprint - WARNING - Ignored `box-shadow: none ` at 46:25, unknown property.
+2025-05-05 15:26:13,736 - weasyprint - WARNING - Expected a media type, got '(max-height: 1000px)'
+2025-05-05 15:26:13,736 - weasyprint - WARNING - Invalid media type ' (max-height: 1000px) ' the whole @media rule was ignored at 616:13.
+2025-05-05 15:26:14,092 - security_assessment - INFO - PDF report generated: ./reports/reports/tucson_unified_school_district_security_assessment_20250505.pdf
+2025-05-05 15:37:38,527 - security_assessment - INFO - Security Assessment initialized for client: Tucson Unified School District
+2025-05-05 15:37:38,531 - security_assessment - INFO - Loaded 1 domains from domains.csv
+2025-05-05 15:37:38,531 - security_assessment - INFO - Analyzing 1 domains
+2025-05-05 15:37:42,623 - security_assessment - INFO - Progress: 1/1 domains analyzed
+2025-05-05 15:37:42,644 - security_assessment - INFO - HTML report generated: ./reports/reports/tucson_unified_school_district_security_assessment_20250505.html
+2025-05-05 15:37:42,657 - weasyprint - WARNING - Ignored `box-shadow: none ` at 46:25, unknown property.
+2025-05-05 15:37:42,708 - weasyprint - WARNING - Expected a media type, got '(max-height: 1000px)'
+2025-05-05 15:37:42,708 - weasyprint - WARNING - Invalid media type ' (max-height: 1000px) ' the whole @media rule was ignored at 616:13.
+2025-05-05 15:37:43,473 - security_assessment - INFO - PDF report generated: ./reports/reports/tucson_unified_school_district_security_assessment_20250505.pdf
