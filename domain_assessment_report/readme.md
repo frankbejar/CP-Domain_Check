@@ -138,24 +138,6 @@ This tool is particularly valuable for:
 4. **Pre-Acquisition Due Diligence**: Basic security assessment of acquisition targets
 5. **Post-Implementation Verification**: Confirming security controls were properly implemented
 
-## Customization
-
-### Adding Custom Checks
-
-You can extend the tool by modifying:
-
-1. `analyze_dns()` method to add new DNS checks
-2. `analyze_headers()` method to add new header-based checks
-3. The HTML template to customize the report appearance
-
-### Report Branding
-
-You can customize the report appearance by:
-
-1. Modifying the CSS in the HTML template
-2. Adding your company logo and information
-3. Adjusting the PDF rendering settings
-
 ## Limitations
 
 - This is a passive assessment tool and does not perform active security testing
